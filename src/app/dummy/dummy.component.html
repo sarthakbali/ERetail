@@ -1,0 +1,16 @@
+<input [value] = "title"><br><br>
+<button class="btn btn-primary" (click) = "getname()">Change Name</button><br><br>
+<input type="text" class="form-control" [(ngModel)] = "projectname"><br><br>
+<button class="btn btn-primary" (click) = "getprojectname()">Add Project</button>
+{{ projectstatus }}
+<hr>
+<div class="row">
+    <div class="col-xs-12">
+         List of projects
+    </div>
+</div>
+<hr>
+<div class="row">
+       <p *ngFor="let project of projects"
+        >{{ project }}</p>
+</div>

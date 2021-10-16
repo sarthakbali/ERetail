@@ -1,0 +1,70 @@
+<section class="home_page">
+    <div class="container">
+       <h1 class="title" style="text-align: center;">Add Product</h1>
+       <form (ngSubmit)='onclickedit()' [formGroup]='editProductForm' novalidate class="form">
+       <div class="form-group">
+          <label for="first_name">Name</label>
+          <input formControlName='name' type="text" class="form-control" id="name" name="name" readonly>
+          <div class="alert  alert-danger" *ngIf="editProductForm.get('name').hasError('required') && editProductForm.get('name').touched">
+              Product Name is required
+          </div>
+       </div>
+       
+       <!-- <div class="form-group">
+          <label for="username">Description</label>
+          <input  formControlName='description' type="text" class="form-control" id="description" name="description">
+          <div class="alert  alert-danger" *ngIf="editProductForm.get('description').hasError('required') && editProductForm.get('description').touched">
+            Description is required
+          </div>
+       </div> -->
+       
+       <div class="form-group">
+          <label for="Mrp">Mrp</label>
+          <input formControlName='mrp' type="number" class="form-control"/>
+          <div class="alert  alert-danger" *ngIf=" !editProductForm.get('mrp').valid && editProductForm.get('mrp').touched">
+            Mrp is required
+          </div>
+       </div>
+       <div class="form-group">
+        <label for="salePrice">SalePrice</label>
+        <input formControlName='salePrice' type="number" class="form-control"/>
+        <div class="alert  alert-danger" *ngIf=" !editProductForm.get('salePrice').valid && editProductForm.get('salePrice').touched">
+           Saleprice is required
+        </div>
+     </div>
+     <div class="form-group">
+        <label for="quantity">Quantity</label>
+        <input formControlName='quantity' type="number" class="form-control" min="1"/>
+        <div class="alert  alert-danger" *ngIf=" !editProductForm.get('quantity').valid && editProductForm.get('quantity').touched">
+          quantity is required
+        </div>
+     </div>
+     <div class="form-group">
+        <label for="onSale">onSale</label>
+        <select formControlName='onSale' class="form-control">
+            <option class="form-control" [ngValue]="true">True</option>
+            <option class="form-control" [ngValue]="false">False</option>
+        </select>
+        <div class="alert  alert-danger" *ngIf=" !editProductForm.get('onSale').valid && editProductForm.get('onSale').touched">
+            onSale is required
+         </div>
+     </div>
+     <!-- <div class="form-group">
+        <label for="category">Category</label>
+        <select formControlName='category' value="Select an option" class="form-control">
+            <option class="form-control">dfg</option>
+            
+        </select>
+        <div class="alert  alert-danger" *ngIf="editProductForm.get('category').hasError('required') && editProductForm.get('category').touched">
+           Category Id is required
+        </div>
+     </div> -->
+       
+       <div class="center">
+          <button [disabled]='editProductForm.invalid' class="btn btn-primary">Update</button>
+          <button (click) = "clearform()" class="btn btn-primary">Reset</button>
+       </div>
+    </form>
+    </div>
+</section>
+<!-- 5ebcffba125a313b886a5d99 -->

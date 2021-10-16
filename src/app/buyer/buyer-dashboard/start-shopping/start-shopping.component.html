@@ -1,0 +1,122 @@
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-8" style="width: 100%;">
+			<div class="panel panel-info">
+				<div class="panel-heading">
+					<div class="panel-title">
+						<div class="row">
+							<div class="col-xs-6">
+								<h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+							</div>
+							<div class="col-xs-6">
+								<a routerLink="/buyer/buyer-dashboard" routerLinkActive="active"><button type="button" class="btn btn-primary btn-sm btn-block">
+									<span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+								</button></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="panel-body">
+					<div class="row">
+						<!-- <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+						</div> -->
+						<form (ngSubmit)='post_shopping()' [formGroup]='shoppings' novalidate class="form">
+						<div class="col-xs-4">
+							<h4 class="product-name">
+								<label>Name</label>
+								<input type="text" class="form-control input-sm" formControlName='name' readonly>
+								
+							</h4>
+							<h4>
+								<label>Description</label>
+								<input type="text" class="form-control input-sm" formControlName='description' readonly> 
+							</h4>
+						</div>
+						<div class="col-xs-6">
+							<div class="col-xs-6 text-right">
+								<h4>
+									<label>Mrp</label>
+									<input type="text" class="form-control input-sm" formControlName='mrp' readonly><br>
+									
+									<label>SalePrice</label>
+									<input type="text" class="form-control input-sm" formControlName='salePrice' readonly> 
+								</h4>
+							</div>
+							<!-- <div class="col-xs-4">
+								<input type="text" class="form-control input-sm" value="1">
+							</div> -->
+						</div>
+						</form>
+						<form (ngSubmit)='onformsubmit()' [formGroup]='addTocartForm' novalidate class="form">
+							<label>Quantity</label>
+							<select formControlName='quantity'>
+								<option class="form-control" [ngValue]="1">1</option>
+                                <option class="form-control" [ngValue]="2">2</option>
+
+								
+							</select>
+							<div class="alert  alert-danger" *ngIf="addTocartForm.get('quantity').hasError('required') && addTocartForm.get('quantity').touched">
+								Quantity is required
+							</div>
+							<div class="col-xs-2">
+								<!-- <button type="submit" class="btn btn-link btn-xs">
+									<span class="glyphicon glyphicon-trash"> </span>
+								</button> -->
+							</div>
+							<div class="col-xs-3">
+								<button type="sun
+								" class="btn btn-default btn-sm btn-block" [disabled]='addTocartForm.invalid'>
+									Add to cart
+								</button>
+							</div>
+						</form>
+						</div>
+					
+				
+					<hr>
+					<!-- <div class="row">
+					   <div class="col-xs-2"><img class="img-responsive" src="http://placehold.it/100x70">
+						</div> 
+						<div class="col-xs-4">
+							<h4 class="product-name"><strong>Product name</strong></h4><h4><small>Product description</small></h4>
+						</div>
+						<div class="col-xs-6">
+							<div class="col-xs-6 text-right">
+								<h6><strong>25.00 <span class="text-muted">x</span></strong></h6>
+							</div>
+							<div class="col-xs-4">
+								<input type="text" class="form-control input-sm" value="1">
+							</div>
+							<div class="col-xs-2">
+								<button type="button" class="btn btn-link btn-xs">
+									<span class="glyphicon glyphicon-trash"> </span>
+								</button>
+							</div>
+						</div>
+					</div> -->
+					<hr>
+						
+				</div>
+			
+				<!-- <div class="panel-footer">
+					<div class="row text-center">
+						<div class="col-xs-9">
+							<h4 class="text-right">Total <strong>$50.00</strong></h4>
+						</div>
+						<div class="col-xs-3">
+							<button type="button" class="btn btn-success btn-block">
+								Checkout
+							</button>
+						</div>
+					</div>
+				</div> -->
+			</div>
+		</div>
+	</div>
+</div>

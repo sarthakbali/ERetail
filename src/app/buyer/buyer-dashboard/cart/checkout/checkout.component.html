@@ -1,0 +1,98 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+  <section class="home_page">
+     <div class="container">
+  
+       <h1 class="title"></h1>
+       <div class="container">
+        <h2 style="text-align: center;">List of Products</h2>
+                    
+        <!-- <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mrp</th>
+              <th>Onsale</th>
+              <th>Quantity</th>
+              <th>Saleprice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let view_cart_result of res" let i = index>
+           
+              <td>{{ view_cart_result.product.name }} </td>
+              <td>{{ view_cart_result.product.mrp }}</td>
+              <td> {{ view_cart_result.product.onSale}}</td>
+              <td> {{ view_cart_result.quantity}}</td>
+              <td> {{ view_cart_result.product.salePrice}}</td>
+
+            </tr> -->
+            <mat-form-field>
+              <mat-label>Filter</mat-label>
+              <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Abc">
+            </mat-form-field>
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z50" matSort>
+
+ 
+              <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+                <td mat-cell  *matCellDef="let element"> {{ element.product.name}} </td>
+              </ng-container>
+            
+            
+              
+              <ng-container matColumnDef="quantity">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+                <td mat-cell  *matCellDef="let element"> {{element.quantity}}</td>
+              </ng-container>
+            
+             
+              <ng-container matColumnDef="mrp">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> MRP </th>
+                <td mat-cell  *matCellDef="let element"> {{element.product.mrp}} </td>
+              </ng-container>
+            
+            
+            
+              <ng-container matColumnDef="salePrice">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Sale Price</th>
+                <td mat-cell *matCellDef="let element"> {{element.product.salePrice}} </td>
+              </ng-container>
+            
+            
+            
+              
+        
+              
+              <!-- <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef > Actions </th>
+                <mat-cell *matCellDef="let row" >
+                  <button type="submit" class="btn btn-primary" (click) = edit_button(row._id)>Edit</button>
+                  <button type="submit" class="btn btn-danger" (click)= delete_button(row._id)>Delete</button>
+                </mat-cell>
+              </ng-container> -->
+              
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          
+          
+        
+            </table><br><br>
+            <label>Total Accumulative amount-</label>
+            {{ this.final_value }}<br>
+            <button type="submit" class="btn btn-primary" (click) = "checkouts()">Checkout</button>
+         
+        
+      </div>
+     </div>
+  </section>
+  </body>
+  
+  

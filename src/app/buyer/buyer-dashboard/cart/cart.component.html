@@ -1,0 +1,47 @@
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+  <section class="home_page">
+     <div class="container">
+  
+       <h1 class="title"></h1>
+       <div class="container">
+        <h2 style="text-align: center;">List of Products</h2>
+                    
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Mrp</th>
+              <th>Onsale</th>
+              <th>Quantity</th>
+              <th>Saleprice</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let view_cart_result of res" let i = index>
+           
+              <td>{{ view_cart_result.product.name }} </td>
+              <td>{{ view_cart_result.product.mrp }}</td>
+              <td> {{ view_cart_result.product.onSale}}</td>
+              <td> {{ view_cart_result.quantity}}</td>
+              <td> {{ view_cart_result.product.salePrice}}</td>
+
+            </tr>
+            <label>Total Accumulative amount-</label>
+            {{ this.final_value }}<br>
+            <button type="submit" class="btn btn-primary" (click) = "navigate_checkout()">Purchase</button>
+          </tbody>
+        </table>
+      </div>
+     </div>
+  </section>
+  </body>
+  
+  

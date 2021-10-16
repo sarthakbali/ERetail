@@ -1,0 +1,49 @@
+
+<section class="home_page">
+    <div class="container">
+
+      <h1 class="title"></h1>
+      <ul class="product_list">
+        <li class="user" *ngFor="let result of res">
+            <!-- <ul><label>Unique Id-</label>
+            {{ result._id }}
+            </ul> -->
+            <ul>
+             
+          <div>
+            <span appHighlightDetails [result]="result">Name-Description-</span>
+              
+              <!-- <ng-container>
+                1.{{ result.name }}&nbsp;&nbsp;
+                2.{{ result.description }}&nbsp;&nbsp;
+                3.{{ result.mrp }}&nbsp;&nbsp;
+                4.{{ result.salePrice }}&nbsp;&nbsp;
+                5.{{ result.onSale }}
+              </ng-container> -->
+             
+            
+          </div>
+            <a (click) ="getshoppingid(result)">{{ result.name }}</a>  - {{ result.description }}
+            </ul>
+            <ul>
+            <label>Mrp-</label>
+            <span [ngClass]="result.onSale ? 'strikethrough' : 'null'">{{ result.mrp }}</span>
+            </ul>
+            <a (click) ="getshoppingid(result)"><button type="submit" class="btn btn-primary" style="float: right;  ">Buy</button></a>
+            <!-- <ul>
+            <label>Onsale-</label>
+            {{ result.onSale}}
+            </ul> -->
+            <ul>
+            <label>Quantity-</label>
+            {{ result.quantity }}
+            </ul>
+            <ul>
+            <span *ngIf="result.onSale"><label>Sales Price-</label>{{ result.salePrice }}</span>
+            </ul>
+            
+        </li>
+    </ul>
+    </div>
+</section>
+    

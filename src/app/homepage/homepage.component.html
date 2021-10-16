@@ -1,0 +1,35 @@
+
+<section class="home_page">
+    <div class="container">
+
+      <h1 class="title"></h1>
+      <ul class="product_list">
+        <li class="user" *ngFor="let result of res | async ">
+            <ul><label>Unique Id-</label>
+            {{ result._id }}
+            </ul>
+            <ul>
+            <label>Name-Description-</label>
+            {{ result.name }} - {{ result.description }}
+            </ul>
+            <ul>
+            <label>Mrp-</label>
+            {{ result.mrp }}
+            </ul>
+            <ul>
+            <label>Onsale-</label>
+            {{ result.onSale }}
+            </ul>
+            <ul>
+            <label>Quantity-</label>
+            {{ result.quantity }}
+            </ul>
+            <ul>
+            <label>Sales Price-</label>
+            {{ result.salePrice }}
+            </ul>
+        </li>
+    </ul>
+    </div>
+</section>
+    

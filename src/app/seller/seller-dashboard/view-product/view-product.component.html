@@ -1,0 +1,184 @@
+<head>
+  <title>View Products</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+</head>
+<body>
+<section class="home_page">
+   <div class="container">
+
+     <h1 class="title"></h1>
+     <div class="container">
+      <h2 style="text-align: center;">List of Products</h2>
+                  
+      <!-- <table class="table table-hover" id="example">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Mrp</th>
+            <th>Onsale</th>
+            <th>Quantity</th>
+            <th>Saleprice</th>
+            <th>Edit</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let view_product_result of res" let i = index>
+         
+            <td>{{ view_product_result.name }} </td>
+            <td>{{ view_product_result.mrp }}</td>
+            <td> {{ view_product_result.onSale}}</td>
+            <td> {{ view_product_result.quantity}}</td>
+            <td> {{ view_product_result.salePrice}}</td>
+            <td><button type="submit" class="btn btn-primary" (click) = edit_button(view_product_result._id)>Edit</button></td>
+            <td><button type="submit" class="btn btn-danger" (click)= delete_button(view_product_result._id)>Delete</button></td>
+          </tr>
+          
+        </tbody>
+      </table> -->
+      <!-- <mat-table class="lessons-table mat-elevation-z8" [dataSource]="dataSource" matSort>
+  
+        <ng-container matColumnDef="name">
+            <div *matHeaderCellDef mat-sort-header>name</div>
+            <div *matCellDef="let result">{{result.name}}</div>
+        </ng-container>
+      
+        <ng-container matColumnDef="mrp">
+            <div *matHeaderCellDef mat-sort-header>mrp</div>
+            <div class="description-cell"
+                      *matCellDef="let result">{{result.mrp}}</div>
+        </ng-container>
+      
+        <ng-container matColumnDef="onSale">
+            <div *matHeaderCellDef mat-sort-header>onSale</div>
+            <div class="duration-cell"
+                      *matCellDef="let result">{{result.onSale}}</div>
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+          <div *matHeaderCellDef mat-sort-header>quantity</div>
+          <div class="duration-cell"
+                    *matCellDef="let result">{{result.quantity}}</div>
+      </ng-container>
+      <ng-container matColumnDef="salePrice">
+        <div *matHeaderCellDef mat-sort-header>salePrice</div>
+        <div class="duration-cell"
+                  *matCellDef="let result">{{result.salePrice}}</div>
+    </ng-container>
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        
+    </mat-table> -->
+    <form style="display: flex" [formGroup]="formControl">
+    <mat-form-field>
+      <input matInput formControlName="name">
+      <mat-placeholder>Product Name</mat-placeholder>
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field>
+      <input matInput formControlName="quantity" type="number" min="0">
+      <mat-placeholder>Quantity</mat-placeholder>
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field>
+      <input matInput formControlName="mrp" type="number" min="0">
+      <mat-placeholder>MRP</mat-placeholder>
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field>
+      <input matInput formControlName="salePrice" type="number" min="0">
+      <mat-placeholder>Sale Price</mat-placeholder>
+    </mat-form-field>&nbsp;&nbsp;
+    <mat-form-field>
+      <input matInput formControlName="onSale">
+      <mat-placeholder>Sale Status</mat-placeholder>
+    </mat-form-field>
+  </form>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z50" matSort>
+
+ 
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Product Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+    
+    
+      
+      <ng-container matColumnDef="quantity">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Quantity </th>
+        <td mat-cell *matCellDef="let element"> {{element.quantity}} </td>
+      </ng-container>
+    
+     
+      <ng-container matColumnDef="mrp">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> MRP </th>
+        <td mat-cell *matCellDef="let element"> {{element.mrp}} </td>
+      </ng-container>
+    
+    
+    
+      <ng-container matColumnDef="salePrice">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Sale Price</th>
+        <td mat-cell *matCellDef="let element"> {{element.salePrice}} </td>
+      </ng-container>
+    
+    
+    
+      <ng-container matColumnDef="onSale">
+        <th mat-header-cell *matHeaderCellDef> Sale Status </th>
+        <td mat-cell *matCellDef="let element"> {{element.onSale}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef > Actions </th>
+        <mat-cell *matCellDef="let row" >
+          <button type="submit" class="btn btn-primary" (click) = edit_button(row._id)>Edit</button>
+          <button type="submit" class="btn btn-danger" (click)= delete_button(row._id)>Delete</button>
+        </mat-cell>
+      </ng-container>
+      
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    
+ 
+
+    </table>
+    </div>
+   </div>
+</section>
+</body>
+<!-- <script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+} );
+</script> -->
+<!-- <ul class="product_list">
+  <li class="user" *ngFor="let view_product_result of res">
+      <ul><label>Unique Id-</label>
+      {{ view_product_result._id }}
+      </ul>
+      <ul>
+      <label>Name</label>
+      {{ view_product_result.name }} 
+      </ul>
+      <ul>
+      <label>Mrp-</label>
+      {{ view_product_result.mrp }}
+      </ul>
+      <ul>
+      <label>Onsale-</label>
+      {{ view_product_result.onSale}}
+      </ul>
+      <ul>
+      <label>Quantity-</label>
+      {{ view_product_result.quantity }}
+      </ul>
+      <ul>
+      <label>Sales Price-</label>
+      {{ view_product_result.salePrice }}
+      </ul>
+  </li>
+</ul>  -->
+
